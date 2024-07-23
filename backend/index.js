@@ -1,5 +1,5 @@
 const env=require('dotenv').config();
-console.log(env);
+// console.log(env);
 const express = require('express');
 const cors = require('cors');
 const app = express();
