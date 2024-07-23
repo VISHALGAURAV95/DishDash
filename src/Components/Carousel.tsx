@@ -1,14 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Carousel: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const items = [
-    "https://images.unsplash.com/photo-1534790566855-4cb788d389ec?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.pexels.com/photos/4109111/pexels-photo-4109111.jpeg?auto=compress&cs=tinysrgb&w=600",
-    "https://images.pexels.com/photos/18803177/pexels-photo-18803177/free-photo-of-plate-with-greasy-momos-dumplings.jpeg?auto=compress&cs=tinysrgb&w=600",
-    "https://images.pexels.com/photos/2347311/pexels-photo-2347311.jpeg?auto=compress&cs=tinysrgb&w=600",
-    "https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=600"
+    {
+      img: "https://images.unsplash.com/photo-1534790566855-4cb788d389ec?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      caption: "Delicious Salads"
+    },
+    {
+      img: "https://images.pexels.com/photos/4109111/pexels-photo-4109111.jpeg?auto=compress&cs=tinysrgb&w=600",
+      caption: "Tasty Burgers"
+    },
+    {
+      img: "https://images.pexels.com/photos/18803177/pexels-photo-18803177/free-photo-of-plate-with-greasy-momos-dumplings.jpeg?auto=compress&cs=tinysrgb&w=600",
+      caption: "Savory Dumplings"
+    },
+    {
+      img: "https://images.pexels.com/photos/2347311/pexels-photo-2347311.jpeg?auto=compress&cs=tinysrgb&w=600",
+      caption: "Fresh Pasta"
+    },
+    {
+      img: "https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=600",
+      caption: "Delicious Desserts"
+    }
   ];
 
   const handlePrev = () => {
@@ -19,48 +34,58 @@ const Carousel: React.FC = () => {
     setActiveIndex((prevIndex) => (prevIndex === items.length - 1 ? 0 : prevIndex + 1));
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prevIndex) => (prevIndex === items.length - 1 ? 0 : prevIndex + 1));
+    }, 3000); // Change image every 3 seconds
+
+    return () => clearInterval(interval); // Clear interval on component unmount
+  }, []);
+
   return (
-    <div>
-      <div id="controls-carousel" className="relative w-full mb-4 md:mb-0 " data-carousel="slide">
-        {/* Carousel wrapper */}
-        <div className="relative h-56 md:h-96 overflow-hidden rounded-lg">
+    <div className="relative w-full h-screen bg-gray-100 flex items-center justify-center">
+      <div className="absolute top-0 left-0 w-full h-full">
+        <div className="relative w-full h-full overflow-hidden flex items-center justify-center">
           {items.map((item, index) => (
             <div
               key={index}
-              className={`absolute w-full h-full transition-opacity duration-500 ${index === activeIndex ? 'opacity-100' : 'opacity-0'}`}
+              className={`absolute w-full h-full transition-opacity duration-1000 ${index === activeIndex ? 'opacity-100' : 'opacity-0'}`}
               style={{
                 zIndex: index === activeIndex ? 1 : 0,
-                backgroundImage: `url(${item})`,
-                backgroundSize: 'contain',
+                backgroundImage: `url(${item.img})`,
+                backgroundSize: 'cover',
                 backgroundPosition: 'center',
               }}
-            />
+            >
+              <div className="flex flex-col items-start justify-center h-full p-10 bg-black bg-opacity-50 text-white">
+                <h1 className="text-4xl font-bold mb-4">Claim Best Offer on Fast Food & Restaurants</h1>
+                <p className="text-xl mb-4">Our job is to fill your tummy with delicious food with fast and free delivery</p>
+                <div className="flex space-x-4">
+                  <button className="bg-red-500 text-white px-4 py-2 rounded">More than Faster</button>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
-        {/* Slider controls */}
         <button
           type="button"
-          className="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+          className="absolute top-1/2 left-4 transform -translate-y-1/2 p-3 bg-gray-900 bg-opacity-50 text-white rounded-full shadow-lg focus:outline-none"
           onClick={handlePrev}
         >
-          <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4"/>
-            </svg>
-            <span className="sr-only">Previous</span>
-          </span>
+          <svg className="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+          <span className="sr-only">Previous</span>
         </button>
         <button
           type="button"
-          className="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+          className="absolute top-1/2 right-4 transform -translate-y-1/2 p-3 bg-gray-900 bg-opacity-50 text-white rounded-full shadow-lg focus:outline-none"
           onClick={handleNext}
         >
-          <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4"/>
-            </svg>
-            <span className="sr-only">Next</span>
-          </span>
+          <svg className="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/>
+          </svg>
+          <span className="sr-only">Next</span>
         </button>
       </div>
     </div>

@@ -1,33 +1,29 @@
-import React from 'react'
+import React from 'react';
 
 function Footer() {
   return (
-    <div className="">
-      
-
-<footer className="bg-white  shadow relative inset-x-0 bottom-0 h-16 dark:bg-gray-800">
-    <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-      <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://flowbite.com/" className="hover:underline">DishDashO™</a>. All Rights Reserved.
-    </span>
-    <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
-        <li>
-            <a href="#" className="hover:underline me-4 md:me-6">About</a>
-        </li>
-        <li>
-            <a href="#" className="hover:underline me-4 md:me-6">Privacy Policy</a>
-        </li>
-        <li>
-            <a href="#" className="hover:underline me-4 md:me-6">Licensing</a>
-        </li>
-        <li>
-            <a href="#" className="hover:underline">Contact</a>
-        </li>
-    </ul>
-    </div>
-</footer>
-
-    </div>
-  )
+    <footer className="bg-inherit text-gray-400 shadow relative inset-x-0 bottom-0">
+      <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+        <span className="block text-sm text-center mb-2 sm:mb-0">
+          © 2024 DishDashO™. All Rights Reserved.
+        </span>
+        <ul className="flex flex-wrap justify-center mt-2 sm:mt-0">
+          <li className="mb-2 sm:mb-0">
+            <a href="#" className="text-gray-400 hover:text-orange-500 mx-2 sm:mx-4">About</a>
+          </li>
+          <li className="mb-2 sm:mb-0">
+            <a href="#" className="text-gray-400 hover:text-orange-500 mx-2 sm:mx-4">Privacy Policy</a>
+          </li>
+          <li className="mb-2 sm:mb-0">
+            <a href="#" className="text-gray-400 hover:text-orange-500 mx-2 sm:mx-4">Licensing</a>
+          </li>
+          <li>
+            <a href="#" className="text-gray-400 hover:text-orange-500 mx-2 sm:mx-4">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  );
 }
 
-export default Footer
+export default Footer;
