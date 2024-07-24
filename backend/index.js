@@ -12,10 +12,22 @@ const orderdata=require("./Routes/Orderdata")
 mongodb();
 
 // Use cors middleware
+const allowedOrigins = [
+  'https://dish-dash-frontend.vercel.app',
+  'https://dish-dash-frontend-kmhrbeaxg-vishalgaurav95s-projects.vercel.app',
+  // Add more origins as needed
+];
+
 app.use(cors({
-  origin: 'https://dish-dash-frontend-kmhrbeaxg-vishalgaurav95s-projects.vercel.app/',
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
 app.use(express.json());
