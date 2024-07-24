@@ -1,30 +1,76 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Dish Dasho
 
-## Expanding the ESLint configuration
+![Dish Dasho](https://drive.google.com/uc?id=1T43O13wusmNpSp_HMn1LIIrMV9IZUTnW)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
+## Table of Contents
+1. [Project Overview](#project-overview)
+2. [Features](#features)
+3. [Technology Stack](#technology-stack)
+4. [Setup and Installation](#setup-and-installation)
+5. [Usage](#usage)
+6. [Contributing](#contributing)
+7. [License](#license)
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Project Overview
+Dish Dasho is a web application for online food ordering, allowing users to browse menus, manage carts, and place orders.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Features
+- User Authentication
+- Menu Display
+- Cart Management
+- Order History
+- Responsive Design
+
+## Technology Stack
+- Frontend: React.js, TypeScript, Tailwind CSS
+- Backend: Node.js, Express.js
+- Database: MongoDB
+- Tools: Vite, Mongoose, Fetch API
+
+## Setup and Installation
+### Prerequisites
+- Node.js (v16+)
+- MongoDB
+
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/dish-dasho.git
+   cd dish-dasho
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Set up environment variables:
+   Create a `.env` file with:
+   ```
+   MONGO_URI=your_mongo_uri
+   JWT_SECRET=your_jwt_secret
+   ```
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+## Usage
+Access the application at http://localhost:3000 to explore its features.
+
+
+
+## Contributing
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/your-feature`)
+3. Commit your changes (`git commit -am 'Add new feature'`)
+4. Push to the branch (`git push origin feature/your-feature`)
+5. Open a pull request
+
+## License
+This project is licensed under the MIT License. 
+
+
+This revised version maintains the essential information while removing unnecessary details and repetitive phrases. The structure is cleaner and more concise, making it easier to read and navigate.
