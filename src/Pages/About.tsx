@@ -1,11 +1,23 @@
 import React from 'react';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
-
+import { useState } from 'react';
 function About() {
+
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const handleCartToggle = () => {
+    setIsCartOpen(!isCartOpen);
+  };
+
+  const handleSearch = (query: string) => {
+    // Example search logic
+    console.log('Searching for:', query);
+  }
+
   return (
     <div className="bg-gradient-to-r from-orange-950 to-black text-orange-800 min-h-screen">
-      <Navbar />
+      <Navbar onCartClick={handleCartToggle} onSearch={handleSearch}/>
 
       {/* Company Section */}
       <section className="company py-16 px-4 sm:px-8">

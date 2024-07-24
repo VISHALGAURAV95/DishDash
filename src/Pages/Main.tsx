@@ -30,7 +30,7 @@ function Main() {
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   const load_data = async () => {
-    let response = await fetch('http://localhost:5000/api/food_items', {
+    let response = await fetch('https://dishdash-backend-v9is.onrender.com/api/food_items', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -58,6 +58,7 @@ function Main() {
   const handleCartToggle = () => {
     setIsCartOpen(!isCartOpen);
   };
+  
        
   return (
     <div className="bg-gradient-to-r from-orange-950 to-black text-orange-500 min-h-screen">

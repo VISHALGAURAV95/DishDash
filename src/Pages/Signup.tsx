@@ -6,7 +6,7 @@ function Signup() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/createUser", {
+    const response = await fetch("https://dishdash-backend-v9is.onrender.com/api/createUser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

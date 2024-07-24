@@ -12,15 +12,17 @@ type OrderItem = {
   price: number;
 };
 
+
+
 export default function MyOrder() {
   const [orderData, setOrderData] = useState<OrderItem[][]>([]);
-
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const fetchMyOrder = async () => {
     const userEmail = localStorage.getItem('email');
     console.log('Fetching orders for:', userEmail);
 
     try {
-      const response = await fetch("http://localhost:5000/api/myOrderData", {
+      const response = await fetch("https://dishdash-backend-v9is.onrender.com/api/myOrderData", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -45,9 +47,18 @@ export default function MyOrder() {
     fetchMyOrder();
   }, []);
 
+  const handleCartToggle = () => {
+    setIsCartOpen(!isCartOpen);
+  };
+
+  const handleSearch = (query: string) => {
+    // Example search logic
+    console.log('Searching for:', query);
+  }
+
   return (
     <div className='bg-gradient-to-r from-orange-950 to-black text-orange-500'>
-      <Navbar />
+      <Navbar onCartClick={handleCartToggle} onSearch={handleSearch}  />
 
       <div className=" container mx-auto p-4">
         <div className="flex flex-wrap -mx-4">

@@ -26,7 +26,7 @@ function MyCart() {
   const handleCheckOut=async()=>{
     let userEmail=localStorage.getItem("email")
     console.log(userEmail);
-    const response=await fetch("http://localhost:5000/api/orderData",{
+    const response=await fetch("https://dishdash-backend-v9is.onrender.com/api/orderData",{
       method:"POST",
       headers: {
         'Content-Type': 'application/json'
