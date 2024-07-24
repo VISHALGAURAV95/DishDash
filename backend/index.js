@@ -13,7 +13,7 @@ mongodb();
 
 // Use cors middleware
 app.use(cors({
-  origin: 'https://dish-dash-frontend.vercel.app/',
+  origin: 'https://dish-dash-frontend-kmhrbeaxg-vishalgaurav95s-projects.vercel.app/',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
