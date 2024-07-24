@@ -1,9 +1,9 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 function Signup() {
   const [credentials, setCredentials] = useState({ name: "", email: "", password: "", geolocation: "" });
-
+  const navigate=useNavigate();
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const response = await fetch("https://dishdash-backend-v9is.onrender.com/api/createUser", {
@@ -16,9 +16,18 @@ function Signup() {
 
     const json = await response.json();
     console.log(json);
-    if (!json.success) {
-      alert("Enter valid credentials");
+    if (json.success) {
+       // Assuming the response contains a `name` field
+      
+      console.log(credentials.email);
+      localStorage.setItem("email",credentials.email);
+      localStorage.setItem("token",json.token);
+      navigate("/");
+
+    } else {
+      alert('Enter valid credentials');
     }
+
   };
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
